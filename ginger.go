@@ -5,10 +5,12 @@ import (
 
 	"github.com/HungTP-Play/ginger-go/model"
 	"github.com/HungTP-Play/ginger-go/module/builder"
+	"github.com/HungTP-Play/ginger-go/module/drawing"
 )
 
 func main() {
-	email := "huntp.personal@gmail.com"
-	identicon := builder.BuildIdenticon([]byte(email), model.Size4x4, 1024)
-	fmt.Printf("IDENTICON %v", identicon.DrawingPoints)
+	email := "hungtp.personal@gmail.com"
+	identicon := builder.BuildIdenticon([]byte(email), model.Size7x7, 140)
+	fmt.Printf("IDENTICON %v", identicon.Hash)
+	drawing.DrawIdenticon(identicon)
 }

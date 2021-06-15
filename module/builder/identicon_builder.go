@@ -84,7 +84,7 @@ func ReflexArr(arr []byte, n int) []byte {
 func BuildGridPoints(identicon model.Identicon) model.Identicon {
 	grid := []model.GridPoint{}
 	for index, val := range identicon.Grid {
-		if index%2 == 0 {
+		if val >= byte(128) {
 			gridPoint := model.GridPoint{
 				Value: val,
 				Index: index,
