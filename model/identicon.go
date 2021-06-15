@@ -14,7 +14,7 @@ const (
 
 type Identicon struct {
 	Name  string
-	Hash  [16]byte
+	Hash  [64]byte
 	Color [3]byte
 	Size  IdenticonSize
 	Grid  []byte
