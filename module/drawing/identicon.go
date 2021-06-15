@@ -9,6 +9,7 @@ import (
 )
 
 func DrawIdenticon(identicon model.Identicon) error {
+	// TODO: Need to do re-arange here
 	// We create our default image containing a 250x250 rectangle
 	var img = image.NewRGBA(image.Rect(0, 0, identicon.ImgSize, identicon.ImgSize))
 
