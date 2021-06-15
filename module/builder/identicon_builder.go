@@ -81,8 +81,62 @@ func ReflexArr(arr []byte, n int) []byte {
 	return arr
 }
 
-func BuildIdenticon(input []byte, iconSize model.IdenticonSize) model.Identicon {
+func BuildGridPoints(identicon model.Identicon) model.Identicon {
+	grid := []model.GridPoint{}
+	for index, val := range identicon.Grid {
+		if index%2 == 0 {
+			gridPoint := model.GridPoint{
+				Value: val,
+				Index: index,
+			}
+			grid = append(grid, gridPoint)
+		}
+	}
+	identicon.GridPoints = grid
+	return identicon
+}
+
+func MapGridPointToDrawingPoint(identicon model.Identicon, imgSize int) model.Identicon {
+	numSpritePerRow := ChunkSize[identicon.Size]
+	pixelPerPoint := int(imgSize / numSpritePerRow)
+	acctualGridSize := pixelPerPoint * numSpritePerRow
+	needRearange := acctualGridSize != imgSize
+	drawingPoints := []model.DrawingPoint{}
+
+	for _, val := range identicon.GridPoints {
+		index := val.Index
+		vertical := int(index/numSpritePerRow) * pixelPerPoint
+		horizontal := int(index%numSpritePerRow) * pixelPerPoint
+
+		topLeft := model.Point{
+			X: horizontal,
+			Y: vertical,
+		}
+
+		bottomRight := model.Point{
+			X: horizontal + pixelPerPoint,
+			Y: vertical + pixelPerPoint,
+		}
+
+		drawingPoint := model.DrawingPoint{
+			TopLeft:     topLeft,
+			BottomRight: bottomRight,
+		}
+
+		drawingPoints = append(drawingPoints, drawingPoint)
+	}
+
+	identicon.DrawingPoints = drawingPoints
+	identicon.ImgSize = imgSize
+	identicon.NeedRearange = needRearange
+
+	return identicon
+}
+
+func BuildIdenticon(input []byte, iconSize model.IdenticonSize, imgSize int) model.Identicon {
 	identicon := IdenticonInit(input, iconSize)
 	identicon = BuildGrid(identicon)
+	identicon = BuildGridPoints(identicon)
+	identicon = MapGridPointToDrawingPoint(identicon, imgSize)
 	return identicon
 }

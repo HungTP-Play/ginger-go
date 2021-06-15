@@ -12,10 +12,18 @@ const (
 	Size9x9
 )
 
+type GridPoint struct {
+	Value byte
+	Index int
+}
 type Identicon struct {
-	Name  string
-	Hash  [64]byte
-	Color [3]byte
-	Size  IdenticonSize
-	Grid  []byte
+	Name          string
+	Hash          [64]byte
+	Color         [3]byte
+	Size          IdenticonSize
+	Grid          []byte
+	GridPoints    []GridPoint
+	DrawingPoints []DrawingPoint
+	ImgSize       int
+	NeedRearange  bool
 }
