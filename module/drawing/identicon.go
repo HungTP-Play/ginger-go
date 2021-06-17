@@ -12,7 +12,7 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
-func DrawIdenticon(identicon model.Identicon, outputDir string) error {
+func DrawIdenticon(identicon model.Identicon, outputDir string, spriteType SpriteType) error {
 	// TODO: Need to do re-arange here
 	// We create our default image containing a 250x250 rectangle
 	var img = image.NewRGBA(image.Rect(0, 0, identicon.ImgSize, identicon.ImgSize))
@@ -38,14 +38,26 @@ func DrawIdenticon(identicon model.Identicon, outputDir string) error {
 
 	// Loop over the pixelmap and call the rect function with the img, color and the dimensions
 	for _, pixel := range identicon.DrawingPoints {
-		DrawRect(
-			img,
-			col,
-			float64(pixel.TopLeft.X),
-			float64(pixel.TopLeft.Y),
-			float64(pixel.BottomRight.X),
-			float64(pixel.BottomRight.Y),
-		)
+		switch spriteType {
+		case Square:
+			DrawRect(
+				img,
+				col,
+				float64(pixel.TopLeft.X),
+				float64(pixel.TopLeft.Y),
+				float64(pixel.BottomRight.X),
+				float64(pixel.BottomRight.Y),
+			)
+		case Circle:
+			DrawCircle(
+				img,
+				col,
+				float64(pixel.TopLeft.X),
+				float64(pixel.TopLeft.Y),
+				float64(pixel.BottomRight.X),
+				float64(pixel.BottomRight.Y),
+			)
+		}
 	}
 	log.Printf("Output path:%v", fileOutputPath)
 	return draw2dimg.SaveToPngFile(fileOutputPath, img)

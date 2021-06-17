@@ -12,5 +12,5 @@ func main() {
 	email := "asdasdgsdfgsdfdfg"
 	identicon := builder.BuildIdenticon([]byte(email), model.Size7x7, 140)
 	fmt.Printf("IDENTICON %v", identicon.Hash)
-	drawing.DrawIdenticon(identicon, "output")
+	drawing.DrawIdenticon(identicon, "output", drawing.Circle)
 }
