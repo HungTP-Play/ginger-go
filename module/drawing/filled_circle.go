@@ -7,10 +7,12 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
+// Try https://www.geogebra.org/m/YGqtDGzK to know how it work
 func DrawCircle(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
 	gc := draw2dimg.NewGraphicContext(img) // Prepare new image context
 	xc, yc := x1+float64(x2-x1)/2, y1+float64(y2-y1)/2
 	w := (x2 - x1)
+	// NOTE: THis constant is use to make the drawing more circular :vv, it should from range [0.95, 0.99]
 	reduceConst := 0.96
 	gc.SetFillColor(col) // set the color
 	gc.MoveTo(xc, y1)    // move to the topleft in the image
