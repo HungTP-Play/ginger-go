@@ -9,8 +9,8 @@ import (
 )
 
 func main() {
-	email := "asdasdgsdfgsdfdfg"
-	identicon := builder.BuildIdenticon([]byte(email), model.Size7x7, 140)
+	email := "HJGKUGBp9asdfklajshdf09"
+	identicon := builder.BuildIdenticon([]byte(email), model.Size5x5, 250)
 	fmt.Printf("IDENTICON %v", identicon.Hash)
 	drawing.DrawIdenticon(identicon, "output", drawing.Circle)
 }
