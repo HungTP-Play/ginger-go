@@ -7,6 +7,14 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
+type RectDrawer struct {
+	Name string
+}
+
+func (r *RectDrawer) Draw(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
+	DrawRect(img, col, x1, y1, x2, y2)
+}
+
 func DrawRect(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
 	gc := draw2dimg.NewGraphicContext(img) // Prepare new image context
 	gc.SetFillColor(col)                   // set the color

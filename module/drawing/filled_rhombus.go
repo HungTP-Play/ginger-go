@@ -7,6 +7,14 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
+type RhombusDrawer struct {
+	Name string
+}
+
+func (r *RhombusDrawer) Draw(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
+	DrawRhombus(img, col, x1, y1, x2, y2)
+}
+
 func DrawRhombus(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
 	xCenter := x1 + (x2-x1)/2
 	yCenter := y1 + (y2-y1)/2

@@ -7,6 +7,14 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
+type CircelDrawer struct {
+	Name string
+}
+
+func (c *CircelDrawer) Draw(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
+	DrawCircle(img, col, x1, y1, x2, y2)
+}
+
 // Try https://www.geogebra.org/m/YGqtDGzK to know how it work
 func DrawCircle(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
 	gc := draw2dimg.NewGraphicContext(img) // Prepare new image context

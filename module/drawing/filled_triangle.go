@@ -7,6 +7,14 @@ import (
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
+type TriangleDrawer struct {
+	Name string
+}
+
+func (r *TriangleDrawer) Draw(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
+	DrawTriangle(img, col, x1, y1, x2, y2)
+}
+
 func DrawTriangle(img *image.RGBA, col color.Color, x1, y1, x2, y2 float64) {
 	xTop := x1 + (x2-x1)/2
 	gc := draw2dimg.NewGraphicContext(img) // Prepare new image context

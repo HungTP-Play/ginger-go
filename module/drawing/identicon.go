@@ -37,45 +37,16 @@ func DrawIdenticon(identicon model.Identicon, outputDir string, spriteType Sprit
 	col := color.RGBA{identicon.Color[0], identicon.Color[1], identicon.Color[2], 255}
 
 	// Loop over the pixelmap and call the rect function with the img, color and the dimensions
+	drawer := GetDrawer(spriteType)
 	for _, pixel := range identicon.DrawingPoints {
-		switch spriteType {
-		case Square:
-			DrawRect(
-				img,
-				col,
-				float64(pixel.TopLeft.X),
-				float64(pixel.TopLeft.Y),
-				float64(pixel.BottomRight.X),
-				float64(pixel.BottomRight.Y),
-			)
-		case Circle:
-			DrawCircle(
-				img,
-				col,
-				float64(pixel.TopLeft.X),
-				float64(pixel.TopLeft.Y),
-				float64(pixel.BottomRight.X),
-				float64(pixel.BottomRight.Y),
-			)
-		case Triangle:
-			DrawTriangle(
-				img,
-				col,
-				float64(pixel.TopLeft.X),
-				float64(pixel.TopLeft.Y),
-				float64(pixel.BottomRight.X),
-				float64(pixel.BottomRight.Y),
-			)
-		case Rhombus:
-			DrawRhombus(
-				img,
-				col,
-				float64(pixel.TopLeft.X),
-				float64(pixel.TopLeft.Y),
-				float64(pixel.BottomRight.X),
-				float64(pixel.BottomRight.Y),
-			)
-		}
+		drawer.Draw(
+			img,
+			col,
+			float64(pixel.TopLeft.X),
+			float64(pixel.TopLeft.Y),
+			float64(pixel.BottomRight.X),
+			float64(pixel.BottomRight.Y),
+		)
 	}
 	log.Printf("Output path:%v", fileOutputPath)
 	return draw2dimg.SaveToPngFile(fileOutputPath, img)
