@@ -56,16 +56,28 @@ func PickCorlor(input []byte) [3]byte {
 	return color
 }
 
-func BuildGrid(indenticon model.Identicon) model.Identicon {
+// Build identicon grid from hash
+//
+// @param symmetry: Is identicon symmetry
+//
+// If symmetry: [1,2,3] -> [1,2,1], [1,2,3,4] -> [1,2,2,1]
+func BuildGrid(indenticon model.Identicon, symmetry bool) model.Identicon {
 	grid := []byte{}
 	step := StepMap[indenticon.Size]
 	numStep := NumSprite[indenticon.Size]
 	chunkSize := ChunkSize[indenticon.Size]
-	for i := 0; i < int(numStep/2); i++ {
-		chunk := make([]byte, chunkSize)
-		copy(chunk, indenticon.Hash[i:i+step])
-		chunk = ReflexArr(chunk, chunkSize)
-		grid = append(grid, chunk...)
+	if symmetry == true {
+		for i := 0; i < int(numStep/2); i++ {
+			chunk := make([]byte, chunkSize)
+			copy(chunk, indenticon.Hash[i:i+step])
+			chunk = ReflexArr(chunk, chunkSize)
+			grid = append(grid, chunk...)
+		}
+	} else {
+		for i := 0; i < numStep; i++ {
+			val := indenticon.Hash[i]
+			grid = append(grid, val)
+		}
 	}
 	indenticon.Grid = grid
 	return indenticon
@@ -81,10 +93,13 @@ func ReflexArr(arr []byte, n int) []byte {
 	return arr
 }
 
-func BuildGridPoints(identicon model.Identicon) model.Identicon {
+// Return list GridPoint from grid identicon grid
+//
+// @param threshold: point with value >= threadhold will be painted with identicon color, otherwiwe have a background color
+func BuildGridPoints(identicon model.Identicon, threshold int) model.Identicon {
 	grid := []model.GridPoint{}
 	for index, val := range identicon.Grid {
-		if val >= byte(128) {
+		if val >= byte(threshold) {
 			gridPoint := model.GridPoint{
 				Value: val,
 				Index: index,
@@ -96,6 +111,9 @@ func BuildGridPoints(identicon model.Identicon) model.Identicon {
 	return identicon
 }
 
+// Turn GridPoint to Drawing Point which can be use to acctual image
+//
+// @param imgSize: image size in pixel
 func MapGridPointToDrawingPoint(identicon model.Identicon, imgSize int) model.Identicon {
 	numSpritePerRow := ChunkSize[identicon.Size]
 	pixelPerPoint := int(imgSize / numSpritePerRow)
@@ -133,10 +151,11 @@ func MapGridPointToDrawingPoint(identicon model.Identicon, imgSize int) model.Id
 	return identicon
 }
 
-func BuildIdenticon(input []byte, iconSize model.IdenticonSize, imgSize int) model.Identicon {
+// Pipeline to build a complete Identicon struct
+func BuildIdenticon(input []byte, iconSize model.IdenticonSize, imgSize int, symmetry bool, threshold int) model.Identicon {
 	identicon := IdenticonInit(input, iconSize)
-	identicon = BuildGrid(identicon)
-	identicon = BuildGridPoints(identicon)
+	identicon = BuildGrid(identicon, symmetry)
+	identicon = BuildGridPoints(identicon, threshold)
 	identicon = MapGridPointToDrawingPoint(identicon, imgSize)
 	return identicon
 }

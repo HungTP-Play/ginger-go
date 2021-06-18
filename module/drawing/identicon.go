@@ -57,6 +57,24 @@ func DrawIdenticon(identicon model.Identicon, outputDir string, spriteType Sprit
 				float64(pixel.BottomRight.X),
 				float64(pixel.BottomRight.Y),
 			)
+		case Triangle:
+			DrawTriangle(
+				img,
+				col,
+				float64(pixel.TopLeft.X),
+				float64(pixel.TopLeft.Y),
+				float64(pixel.BottomRight.X),
+				float64(pixel.BottomRight.Y),
+			)
+		case Rhombus:
+			DrawRhombus(
+				img,
+				col,
+				float64(pixel.TopLeft.X),
+				float64(pixel.TopLeft.Y),
+				float64(pixel.BottomRight.X),
+				float64(pixel.BottomRight.Y),
+			)
 		}
 	}
 	log.Printf("Output path:%v", fileOutputPath)
