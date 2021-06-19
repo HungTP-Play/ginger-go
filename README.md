@@ -10,7 +10,7 @@ Giner is simple identicon gengerator
 
 ## Installation
 
-```go
+```shell
 go get github.com/HungTP-Play/ginger-go@0.1.2
 ```
 
