@@ -14,7 +14,7 @@ This project is inspired by [Github Indenticon](https://github.blog/2013-08-14-i
 
 - ✅ Don Park: 9-block IP Identification style
 - ✏️ Github Identicon style (planning)
-- ✏️ Jdenticon style (planning)
+- ✏️ [Jdenticon](https://jdenticon.com/) style (planning)
 
 ## Installation
 
