@@ -17,6 +17,7 @@ func (p *Type9Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 	x1p4, x3p4 := x1+sprite.Width*0.25, x1+sprite.Width*0.75
 	y1p4, y3p4 := y1+sprite.Height*0.25, y1+sprite.Height*0.75
 	gc := draw2dimg.NewGraphicContext(image)
+	gc.SetFillColor(color)
 
 	// TopLeft -> TopRight
 	gc.MoveTo(x1p4, y1p4)

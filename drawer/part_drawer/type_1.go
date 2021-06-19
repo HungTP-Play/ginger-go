@@ -16,6 +16,7 @@ func (p *Type1Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 	x2, y2 := sprite.TopLeft.X+sprite.Width, sprite.TopLeft.Y+sprite.Height
 	x1, y1 := sprite.TopLeft.X, sprite.TopLeft.Y
 	gc := draw2dimg.NewGraphicContext(image)
+	gc.SetFillColor(color)
 
 	// TopLeft -> TopRight
 	gc.MoveTo(x1, y1)

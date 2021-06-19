@@ -17,6 +17,7 @@ func (p *Type6Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 	x1, y1 := sprite.TopLeft.X, sprite.TopLeft.Y
 	xCenter, yCenter := x1+(x2-x1)/2, y1+(y2-y1)/2
 	gc := draw2dimg.NewGraphicContext(image)
+	gc.SetFillColor(color)
 
 	if rotation == 0 {
 		// TopLeft -> RightCenter

@@ -17,6 +17,7 @@ func (p *Type13Drawer) DrawSprite(color color.Color, image draw.Image, sprite mo
 	x1, y1 := sprite.TopLeft.X, sprite.TopLeft.Y
 	xCenter, yCenter := x1+sprite.Width/2, y1+sprite.Height/2
 	gc := draw2dimg.NewGraphicContext(image)
+	gc.SetFillColor(color)
 
 	if rotation == 0 {
 		// CenterCenter -> BottomRight

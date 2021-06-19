@@ -1,12 +1,12 @@
 package partdrawer
 
 import (
-	"image"
 	"image/color"
+	"image/draw"
 
 	"github.com/HungTP-Play/ginger-go/model"
 )
 
-type PartDrawer interface {
-	DrawSprite(color color.Color, image image.Image, sprite model.Sprite, rotation int)
+type IPartDrawer interface {
+	DrawSprite(color color.Color, image draw.Image, sprite model.Sprite, rotation int)
 }
