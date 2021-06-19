@@ -32,17 +32,17 @@ func (p *Type14Drawer) DrawSprite(color color.Color, image draw.Image, sprite mo
 		gc.MoveTo(xCenter, yCenter)
 		gc.LineTo(xCenter, y1)
 	} else if rotation == 1 {
-		// TopRight -> CenterCenter
-		gc.MoveTo(x2, y1)
+		// TopCenter -> CenterCenter
+		gc.MoveTo(xCenter, y1)
 		gc.LineTo(xCenter, yCenter)
 
 		// CenterCenter -> RightCenter
 		gc.MoveTo(xCenter, yCenter)
 		gc.LineTo(x2, yCenter)
 
-		// RightCenter -> TopRight
+		// RightCenter -> TopCenter
 		gc.MoveTo(x2, yCenter)
-		gc.LineTo(x2, y1)
+		gc.LineTo(xCenter, y1)
 	} else if rotation == 2 {
 		// CenterCenter -> RightCenter
 		gc.MoveTo(xCenter, yCenter)
