@@ -8,5 +8,5 @@ import (
 )
 
 type PartDrawer interface {
-	DrawSprite(color color.Color, image image.Image, sprite model.Sprite)
+	DrawSprite(color color.Color, image image.Image, sprite model.Sprite, rotation int)
 }
