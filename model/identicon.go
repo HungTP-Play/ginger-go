@@ -14,4 +14,6 @@ type Identicon struct {
 	SideSpriteIndex   int
 	CornerSpriteIndex int
 	OutputType        constant.OutputType
+	StartSideIndex    int
+	StartCornerIndex  int
 }

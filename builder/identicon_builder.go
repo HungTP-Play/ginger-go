@@ -12,6 +12,7 @@ func BuildIdenticon(idenInfo string, outputType constant.OutputType) model.Ident
 	hash := md5.Sum([]byte(idenInfo))
 	color := PickColor(hash)
 	centerIndex, sideIndex, cornerIndex := PickSpriteIndex(hash)
+	startSideIndex, startCornerIndex := PickStartIndices(hash)
 	return model.Identicon{
 		IdenInfo:          idenInfo,
 		Hash:              hash,
@@ -20,6 +21,8 @@ func BuildIdenticon(idenInfo string, outputType constant.OutputType) model.Ident
 		SideSpriteIndex:   sideIndex,
 		CornerSpriteIndex: cornerIndex,
 		Color:             color,
+		StartSideIndex:    startSideIndex,
+		StartCornerIndex:  startCornerIndex,
 	}
 }
 
@@ -33,5 +36,14 @@ func PickColor(hash [16]byte) color.Color {
 }
 
 func PickSpriteIndex(hash [16]byte) (centerIndex int, sideIndex int, cornerIndex int) {
-	return 1, 2, 3
+	centerIndex = int((hash[3] & 192) >> 6)
+	sideIndex = int((hash[3] & 60) >> 2)
+	cornerIndex = int(((hash[3] & 3 << 6) | (hash[4] & 192 >> 2)) >> 4)
+	return centerIndex, sideIndex, cornerIndex
+}
+
+func PickStartIndices(hash [16]byte) (startSideIndex int, StartCornerIndex int) {
+	startSideIndex = int((hash[4] & 60) >> 4)
+	StartCornerIndex = int((hash[4] & 12 >> 2))
+	return startSideIndex, StartCornerIndex
 }
