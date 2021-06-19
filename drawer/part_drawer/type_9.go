@@ -12,7 +12,7 @@ type Type9Drawer struct {
 	Name string
 }
 
-func (p *Type9Drawer) DrawSprite(color color.Color, image draw.Image, sprite model.Sprite) {
+func (p *Type9Drawer) DrawSprite(color color.Color, image draw.Image, sprite model.Sprite, rotation int) {
 	x1, y1 := sprite.TopLeft.X, sprite.TopLeft.Y
 	x1p4, x3p4 := x1+sprite.Width*0.25, x1+sprite.Width*0.75
 	y1p4, y3p4 := y1+sprite.Height*0.25, y1+sprite.Height*0.75
