@@ -3,9 +3,10 @@ package partdrawer
 import (
 	"image"
 	"image/color"
+
+	"github.com/HungTP-Play/ginger-go/model"
 )
 
 type PartDrawer interface {
-	DrawPartBitmap(color color.Color, image image.Image, )
-	DrawPartSvg(color color.Color, image image.Image)
+	DrawSprite(color color.Color, image image.Image, sprite model.Sprite)
 }
