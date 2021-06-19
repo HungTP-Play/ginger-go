@@ -1,12 +1,20 @@
-# Giner
+# Ginger
 
 Giner is simple identicon gengerator
+
+This project is inspired by [Github Indenticon](https://github.blog/2013-08-14-identicons/), but the current implement is inspired from [Don Park: 9-block IP Identification](https://web.archive.org/web/20080703155519/http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification).
 
 ## Support image format
 
 - ✅ PNG
 - ✅ JPG
 - ✏️ SVG (planning)
+
+## Support Identicon Style
+
+- ✅ Don Park: 9-block IP Identification style
+- ✏️ Github Identicon style (planning)
+- ✏️ Jdenticon style (planning)
 
 ## Installation
 
