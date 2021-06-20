@@ -27,27 +27,21 @@ func (p *Type7Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> BottomCenter
-		gc.MoveTo(x2, y2)
 		gc.LineTo(xCenter, y2)
 
 		// BottomCenter -> Center3p4
-		gc.MoveTo(xCenter, y2)
 		gc.LineTo(x3p4, yCenter)
 
 		// Center3p4 -> Center1p4
-		gc.MoveTo(x3p4, yCenter)
 		gc.LineTo(x1p4, yCenter)
 
 		// Center1p4 -> BottomCenter
-		gc.MoveTo(x1p4, yCenter)
 		gc.LineTo(xCenter, y2)
 
 		// BottomCenter -> BottomLeft
-		gc.MoveTo(xCenter, y2)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopCenter
-		gc.MoveTo(x1, y2)
 		gc.LineTo(xCenter, y1)
 	} else if rotation == 1 {
 		// TopLeft -> RightCenter
@@ -55,27 +49,21 @@ func (p *Type7Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, yCenter)
 
 		// RightCenter -> BottomLeft
-		gc.MoveTo(x2, yCenter)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> LeftCenter
-		gc.MoveTo(x1, y2)
 		gc.LineTo(x1, yCenter)
 
 		// LeftCenter -> xCentery34
-		gc.MoveTo(x1, yCenter)
 		gc.LineTo(xCenter, y3p4)
 
 		// xCentery34 -> xCentery14
-		gc.MoveTo(xCenter, y3p4)
 		gc.LineTo(xCenter, y1p4)
 
 		// xCentery14 -> LeftCenter
-		gc.MoveTo(xCenter, y1p4)
 		gc.LineTo(x1, yCenter)
 
 		// LeftCenter -> TopLeft
-		gc.MoveTo(x1, yCenter)
 		gc.LineTo(x1, y1)
 	} else if rotation == 2 {
 		// TopLeft -> TopRight
@@ -83,27 +71,21 @@ func (p *Type7Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y1)
 
 		// TopRight -> BottomCenter
-		gc.MoveTo(x2, y1)
 		gc.LineTo(xCenter, y2)
 
 		// BottomCenter -> X14yCenter
-		gc.MoveTo(xCenter, y2)
 		gc.LineTo(x1p4, yCenter)
 
 		// X14yCenter -> X34YCenter
-		gc.MoveTo(x1p4, yCenter)
 		gc.LineTo(x3p4, yCenter)
 
 		// X34YCenter -> TopCenter
-		gc.MoveTo(x3p4, yCenter)
 		gc.LineTo(xCenter, y1)
 
 		// TopCenter -> X14YCenter
-		gc.MoveTo(xCenter, y1)
 		gc.LineTo(x1p4, yCenter)
 
 		// X14YCenter -> TopLeft
-		gc.MoveTo(x1p4, yCenter)
 		gc.LineTo(x1, y1)
 	} else {
 		// TopRight -> LeftCenter
@@ -111,27 +93,21 @@ func (p *Type7Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x1, yCenter)
 
 		// LeftCenter -> BottomRight
-		gc.MoveTo(x1, yCenter)
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> RightCenter
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x2, yCenter)
 
 		// RightCenter -> CenterY24
-		gc.MoveTo(x2, yCenter)
 		gc.LineTo(xCenter, y3p4)
 
 		// CenterY34 -> CenterY14
-		gc.MoveTo(xCenter, y3p4)
 		gc.LineTo(xCenter, y1p4)
 
 		// CenterY14 -> RightCenter
-		gc.MoveTo(xCenter, y1p4)
 		gc.LineTo(x2, yCenter)
 
 		// RightCenter -> TopRight
-		gc.MoveTo(x2, yCenter)
 		gc.LineTo(x2, y1)
 	}
 

@@ -24,11 +24,9 @@ func (p *Type2Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y1)
 
 		// TopRight -> BottomLeft
-		gc.MoveTo(x2, y1)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopLeft
-		gc.MoveTo(x1, y2)
 		gc.LineTo(x1, y1)
 	} else if rotation == 1 {
 		// TopLeft -> TopRight
@@ -36,11 +34,9 @@ func (p *Type2Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y1)
 
 		// TopRight -> BottomRight
-		gc.MoveTo(x2, y1)
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> TopLeft
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x1, y1)
 	} else if rotation == 2 {
 		// TopRight -> BottomRight
@@ -48,11 +44,9 @@ func (p *Type2Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> BottomLeft
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopRight
-		gc.MoveTo(x1, y2)
 		gc.LineTo(x2, y1)
 	} else {
 		// TopLeft -> BottomRight
@@ -60,11 +54,9 @@ func (p *Type2Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> BottomLeft
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopLeft
-		gc.MoveTo(x1, y2)
 		gc.LineTo(x1, y1)
 	}
 

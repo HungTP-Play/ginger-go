@@ -26,11 +26,12 @@ func DrawGithubIdenticon(identicon model.Identicon, outputDir string, imgSize in
 // Draw all even value
 func drawIdenticon(identicon model.Identicon, drawSize float64, img draw.Image, padding float64) {
 	spriteType := constant.Type1
+	rotation := 0
 	drawer := partdrawer.GetPartDrawer(spriteType)
 	sprites := buildSprites(identicon, drawSize, int(padding))
 	log.Printf("Len sprites %v", len(sprites))
 	for _, sprite := range sprites {
-		drawer.DrawSprite(identicon.Color, img, sprite, 0)
+		drawer.DrawSprite(identicon.Color, img, sprite, rotation)
 	}
 }
 

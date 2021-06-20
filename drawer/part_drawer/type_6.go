@@ -25,15 +25,12 @@ func (p *Type6Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, yCenter)
 
 		// RightCenter -> BottomRight
-		gc.MoveTo(x2, yCenter)
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> BottomCenter
-		gc.MoveTo(x2, y2)
 		gc.LineTo(xCenter, y2)
 
 		// BottomCenter -> TopLeft
-		gc.MoveTo(xCenter, y2)
 		gc.LineTo(x1, y1)
 	} else if rotation == 1 {
 		// TopRight -> BottomCenter
@@ -41,15 +38,12 @@ func (p *Type6Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(xCenter, y2)
 
 		// BottomCenter -> BottomLeft
-		gc.MoveTo(xCenter, y2)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> LeftCenter
-		gc.MoveTo(x1, y2)
 		gc.LineTo(x1, yCenter)
 
 		// LeftCenter -> TopRight
-		gc.MoveTo(x1, yCenter)
 		gc.LineTo(x2, y1)
 	} else if rotation == 2 {
 		// TopLeft -> TopCenter
@@ -57,15 +51,12 @@ func (p *Type6Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(xCenter, y1)
 
 		// TopCenter -> BottomRight
-		gc.MoveTo(xCenter, y1)
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> LeftCenter
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x1, yCenter)
 
 		// LeftCenter -> TopLeft
-		gc.MoveTo(x1, yCenter)
 		gc.LineTo(x1, y1)
 	} else {
 		// TopCenter -> TopRight
@@ -73,15 +64,12 @@ func (p *Type6Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y1)
 
 		// TopRight -> RightCenter
-		gc.MoveTo(x2, y1)
 		gc.LineTo(x2, yCenter)
 
 		// RightCenter -> BottomLeft
-		gc.MoveTo(x2, yCenter)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopCenter
-		gc.MoveTo(x1, y2)
 		gc.LineTo(xCenter, y1)
 	}
 

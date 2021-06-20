@@ -25,11 +25,9 @@ func (p *Type3Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> BottomLeft
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopCenter
-		gc.MoveTo(x1, y2)
 		gc.LineTo(xCenter, y1)
 	} else if rotation == 1 {
 		// TopLeft -> RightCenter
@@ -37,11 +35,9 @@ func (p *Type3Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, yCenter)
 
 		// RightCenter -> BottomLeft
-		gc.MoveTo(x2, yCenter)
 		gc.LineTo(x1, y2)
 
 		// BottomLeft -> TopLeft
-		gc.MoveTo(x1, y2)
 		gc.LineTo(x1, y1)
 	} else if rotation == 2 {
 		// topLeft -> TopRight
@@ -49,11 +45,9 @@ func (p *Type3Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y1)
 
 		// TopRight -> BottomCenter
-		gc.MoveTo(x2, y1)
 		gc.LineTo(xCenter, y2)
 
 		// BottomCenter -> TopLeft
-		gc.MoveTo(xCenter, y2)
 		gc.LineTo(x1, y1)
 	} else {
 		// TopRight -> BottomRight
@@ -61,11 +55,9 @@ func (p *Type3Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 		gc.LineTo(x2, y2)
 
 		// BottomRight -> LeftCenter
-		gc.MoveTo(x2, y2)
 		gc.LineTo(x1, yCenter)
 
 		// LeftCenter -> TopRight
-		gc.MoveTo(x1, yCenter)
 		gc.LineTo(x2, y1)
 	}
 

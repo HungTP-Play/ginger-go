@@ -23,15 +23,12 @@ func (p *Type1Drawer) DrawSprite(color color.Color, image draw.Image, sprite mod
 	gc.LineTo(x2, y1)
 
 	// TopRight -> BottomRight
-	gc.MoveTo(x2, y1)
 	gc.LineTo(x2, y2)
 
 	// BottomRight -> BottomLeft
-	gc.MoveTo(x2, y2)
 	gc.LineTo(x1, y2)
 
 	// BottomLeft -> TopLeft
-	gc.MoveTo(x1, y2)
 	gc.LineTo(x1, y1)
 
 	gc.SetLineWidth(0)
