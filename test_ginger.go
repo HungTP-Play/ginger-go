@@ -8,9 +8,11 @@ import (
 )
 
 func main() {
-	info := "Identicon_Clue_De_Nuit_Pour_Homme"
+	info := "Tom_Ford_Black_Orchid"
 	outputDir := "output"
-	_, err := ginger.DrawIdenticon(info, outputDir, 250, 15, constant.PNG)
+	imageSize := 500
+	padding := float64(imageSize) * 0.05
+	_, err := ginger.DrawGithubIdenticon(info, outputDir, imageSize, int(padding), constant.JPG)
 	if err != nil {
 		log.Printf(err.Error())
 	}

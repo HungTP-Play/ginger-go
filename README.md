@@ -38,8 +38,8 @@ func main() {
  info := "Tom_Ford_Black_Orchid"
  outputDir := "output"
  imageSize := 500
- padding := imageSize * 0.05
- _, err := ginger.DrawIdenticon(info, outputDir, imageSize, padding, constant.JPG)
+ padding := float64(imageSize) * 0.05
+ _, err := ginger.DrawIdenticon(info, outputDir, imageSize, int(padding), constant.JPG)
  if err != nil {
   log.Printf(err.Error())
  }
@@ -64,9 +64,11 @@ import (
 )
 
 func main() {
- info := "Github_Bvlgari_Aqva_Pour_Homme"
+ info := "Tom_Ford_Black_Orchid"
  outputDir := "output"
- _, err := ginger.DrawGithubIdenticon(info, outputDir, 250, 15, constant.PNG)
+ imageSize := 500
+ padding := float64(imageSize) * 0.05
+ _, err := ginger.DrawGithubIdenticon(info, outputDir, imageSize, int(padding), constant.JPG)
  if err != nil {
   log.Printf(err.Error())
  }
