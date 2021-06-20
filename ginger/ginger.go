@@ -31,7 +31,8 @@ func getExt(outputType constant.OutputType) string {
 /// Draw Identicon image
 func DrawIdenticon(idenInfo string, outputPath string, imgSize int, padding int, outputType constant.OutputType) (*model.Identicon, error) {
 	identicon := builder.BuildIdenticon(idenInfo, outputType)
-	util.PrepareOutput(outputPath)
+	go util.PrepareOutput(outputPath)
+
 	img := drawer.DrawIdenticon(identicon, outputPath, imgSize, padding)
 
 	ext := getExt(outputType)

@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	info := "Tom_Ford_Black_Orchid"
+	info := "🦄🦄🦄🦄🦄"
 	outputDir := "output"
 	imageSize := 500
 	padding := float64(imageSize) * 0.05
-	_, err := ginger.DrawGithubIdenticon(info, outputDir, imageSize, int(padding), constant.JPG)
+	_, err := ginger.DrawGithubIdenticon(info, outputDir, imageSize, int(padding), constant.PNG)
 	if err != nil {
 		log.Printf(err.Error())
 	}

@@ -4,6 +4,7 @@ import (
 	"image"
 	"image/color"
 	"image/draw"
+	"sync"
 
 	"github.com/HungTP-Play/ginger-go/constant"
 	partdrawer "github.com/HungTP-Play/ginger-go/drawer/part_drawer"
@@ -19,19 +20,33 @@ import (
 func DrawIdenticon(identicon model.Identicon, outputDir string, imgSize int, padding int) draw.Image {
 	drawSize := imgSize - padding*2
 	img := image.NewRGBA(image.Rect(0, 0, imgSize, imgSize))
+	var wg sync.WaitGroup
 
 	// Draw backgournd
 	DrawBackground(imgSize, img)
 
 	// Draw center part
-	drawCenter(identicon, drawSize, img, float64(padding))
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		drawCenter(identicon, drawSize, img, float64(padding))
+	}()
 
 	// Draw side parts
-	drawSides(identicon, drawSize, img, float64(padding))
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		drawSides(identicon, drawSize, img, float64(padding))
+	}()
 
 	// Draw corner parts
-	drawCorners(identicon, drawSize, img, float64(padding))
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		drawCorners(identicon, drawSize, img, float64(padding))
+	}()
 
+	wg.Wait()
 	return img
 }
 
