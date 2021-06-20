@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	info := "Tom_Ford_Black_Orchid"
+	info := "Identicon_Clue_De_Nuit_Pour_Homme"
 	outputDir := "output"
-	_, err := ginger.DrawIdenticon(info, outputDir, 250, 15, constant.JPG)
+	_, err := ginger.DrawIdenticon(info, outputDir, 250, 15, constant.PNG)
 	if err != nil {
 		log.Printf(err.Error())
 	}

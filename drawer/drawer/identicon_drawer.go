@@ -24,13 +24,13 @@ func DrawIdenticon(identicon model.Identicon, outputDir string, imgSize int, pad
 	DrawBackground(imgSize, img)
 
 	// Draw center part
-	DrawCenter(identicon, drawSize, img, float64(padding))
+	drawCenter(identicon, drawSize, img, float64(padding))
 
 	// Draw side parts
-	DrawSides(identicon, drawSize, img, float64(padding))
+	drawSides(identicon, drawSize, img, float64(padding))
 
 	// Draw corner parts
-	DrawCorners(identicon, drawSize, img, float64(padding))
+	drawCorners(identicon, drawSize, img, float64(padding))
 
 	return img
 }
@@ -52,7 +52,7 @@ func DrawBackground(imgSize int, image draw.Image) {
 }
 
 // Draw center part
-func DrawCenter(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
+func drawCenter(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
 	centerSprite := model.Sprite{
 		TopLeft: model.Point{
 			X: float64(drawSize)/3 + padding,
@@ -68,7 +68,7 @@ func DrawCenter(identicon model.Identicon, drawSize int, image draw.Image, paddi
 }
 
 // Draw side parts
-func DrawSides(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
+func drawSides(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
 	w := drawSize / 3
 	h := drawSize / 3
 
@@ -123,7 +123,7 @@ func DrawSides(identicon model.Identicon, drawSize int, image draw.Image, paddin
 }
 
 // Draw corner parts
-func DrawCorners(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
+func drawCorners(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
 	w := drawSize / 3
 	h := drawSize / 3
 
