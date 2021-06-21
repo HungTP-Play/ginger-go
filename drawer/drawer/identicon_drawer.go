@@ -9,6 +9,7 @@ import (
 	"github.com/HungTP-Play/ginger-go/constant"
 	partdrawer "github.com/HungTP-Play/ginger-go/drawer/part_drawer"
 	"github.com/HungTP-Play/ginger-go/model"
+	"github.com/HungTP-Play/ginger-go/util"
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
@@ -17,11 +18,10 @@ import (
 // Image will use idenInfo as it name
 //
 // ex: idenInfo is "stoicmeme" and use PNG format, then image will be drawed to outputDir/storicmeme.png
-func DrawIdenticon(identicon model.Identicon, outputDir string, imgSize int, padding int) draw.Image {
+func DrawIdenticon(identicon model.Identicon, outputDir string, imgSize int, padding int, muliColor bool) draw.Image {
 	drawSize := imgSize - padding*2
 	img := image.NewRGBA(image.Rect(0, 0, imgSize, imgSize))
 	var wg sync.WaitGroup
-
 	// Draw backgournd
 	DrawBackground(imgSize, img)
 
@@ -36,14 +36,40 @@ func DrawIdenticon(identicon model.Identicon, outputDir string, imgSize int, pad
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		drawSides(identicon, drawSize, img, float64(padding))
+		if muliColor == true {
+			baseCol := identicon.Color
+			r, g, b, _ := baseCol.RGBA()
+			h, s, v := util.Rgb2Hlv(float64(r), float64(g), float64(b))
+			h = h + 120
+			if h >= 360 {
+				h = h - 360
+			}
+			r2, g2, b2 := util.Hsv2Rgb(float64(h), float64(s), float64(v))
+			color := color.RGBA{uint8(r2), uint8(g2), uint8(b2), 255}
+			drawSides(identicon, drawSize, img, float64(padding), color)
+		} else {
+			drawSides(identicon, drawSize, img, float64(padding), identicon.Color)
+		}
 	}()
 
 	// Draw corner parts
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		drawCorners(identicon, drawSize, img, float64(padding))
+		if muliColor == true {
+			baseCol := identicon.Color
+			r, g, b, _ := baseCol.RGBA()
+			h, s, v := util.Rgb2Hlv(float64(r), float64(g), float64(b))
+			h = h + 240
+			if h >= 360 {
+				h = h - 360
+			}
+			r2, g2, b2 := util.Hsv2Rgb(float64(h), float64(s), float64(v))
+			color := color.RGBA{uint8(r2), uint8(g2), uint8(b2), 255}
+			drawCorners(identicon, drawSize, img, float64(padding), color)
+		} else {
+			drawCorners(identicon, drawSize, img, float64(padding), identicon.Color)
+		}
 	}()
 
 	wg.Wait()
@@ -83,7 +109,7 @@ func drawCenter(identicon model.Identicon, drawSize int, image draw.Image, paddi
 }
 
 // Draw side parts
-func drawSides(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
+func drawSides(identicon model.Identicon, drawSize int, image draw.Image, padding float64, color color.Color) {
 	w := drawSize / 3
 	h := drawSize / 3
 
@@ -133,12 +159,12 @@ func drawSides(identicon model.Identicon, drawSize int, image draw.Image, paddin
 
 	for index, sprite := range sprites {
 		rotation := CalRotation(index, identicon.StartSideIndex)
-		drawer.DrawSprite(identicon.Color, image, sprite, rotation)
+		drawer.DrawSprite(color, image, sprite, rotation)
 	}
 }
 
 // Draw corner parts
-func drawCorners(identicon model.Identicon, drawSize int, image draw.Image, padding float64) {
+func drawCorners(identicon model.Identicon, drawSize int, image draw.Image, padding float64, color color.Color) {
 	w := drawSize / 3
 	h := drawSize / 3
 
@@ -188,7 +214,7 @@ func drawCorners(identicon model.Identicon, drawSize int, image draw.Image, padd
 
 	for index, sprite := range sprites {
 		rotation := CalRotation(index, identicon.StartCornerIndex)
-		drawer.DrawSprite(identicon.Color, image, sprite, rotation)
+		drawer.DrawSprite(color, image, sprite, rotation)
 	}
 }
 

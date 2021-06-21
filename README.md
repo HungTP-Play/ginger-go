@@ -39,7 +39,8 @@ func main() {
  outputDir := "output"
  imageSize := 500
  padding := float64(imageSize) * 0.05
- _, err := ginger.DrawIdenticon(info, outputDir, imageSize, int(padding), constant.JPG)
+ multiColor := true
+ _, err := ginger.DrawIdenticon(info, outputDir, imageSize, int(padding), constant.JPG, multiColor)
  if err != nil {
   log.Printf(err.Error())
  }
@@ -48,10 +49,17 @@ func main() {
 
 Output Example
 
+- One color
 ![Identicon 1](https://i.ibb.co/N3FnVPN/Identicon-Bacarat-Rouge-540.png)
 ![Identicon 2](https://i.ibb.co/5n3TZJY/Identicon-Bvlgari-Aqva-Pour-Homme.png)
 ![Identicon 3](https://i.ibb.co/BtP3GYh/Identicon-Clue-De-Nuit-Pour-Homme.png)
 ![Identicon 4](https://i.ibb.co/7CjKnL1/Identicon-Vesace-Eros.png)
+
+- Multi color
+![Identicon 5](https://i.ibb.co/ysJ3J6V/Identicon-Bacarat-Rouge-540.png)
+![Identicon 6](https://i.ibb.co/2MZ1Nsb/Identicon-Bvlgari-Aqva-Pour-Homme.png)
+![Identicon 7](https://i.ibb.co/FHQ8vdp/Identicon-Tom-Ford-Black-Orchid.png)
+![Identicon 8](https://i.ibb.co/y6smtWb/Identicon-Vesace-Eros.png)
 
 ### Github Style
 

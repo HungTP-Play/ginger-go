@@ -1,7 +1,6 @@
 package util
 
 import (
-	"log"
 	"math"
 )
 
@@ -66,7 +65,6 @@ func Hsv2Rgb(h float64, s float64, v float64) (int, int, int) {
 	x := c * (1 - math.Abs(float64(h60m2)-1))
 
 	m := v - c
-	log.Printf("M: %v", m)
 
 	var r int
 	var g int
@@ -116,6 +114,5 @@ func Hsv2Rgb(h float64, s float64, v float64) (int, int, int) {
 	g = int(math.Round((g_ + m) * 255))
 	b = int(math.Round((b_ + m) * 255))
 
-	log.Printf("r, g, b: %v, %v, %v", r, g, b)
 	return r, g, b
 }

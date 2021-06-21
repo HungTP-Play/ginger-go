@@ -12,7 +12,7 @@ func BenchmarkDrawIdenticon(t *testing.B) {
 	outputDir := "output"
 	imageSize := 500
 	padding := float64(imageSize) * 0.05
-	_, err := DrawIdenticon(info, outputDir, imageSize, int(padding), constant.JPG)
+	_, err := DrawIdenticon(info, outputDir, imageSize, int(padding), constant.JPG, false)
 	if err != nil {
 		log.Printf(err.Error())
 	}
