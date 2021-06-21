@@ -59,11 +59,8 @@ One color
 Multi-color
 
 <img src="https://i.ibb.co/ysJ3J6V/Identicon-Bacarat-Rouge-540.png" width="200"/>
-
 <img src="https://i.ibb.co/2MZ1Nsb/Identicon-Bvlgari-Aqva-Pour-Homme.png" width="200"/>
-
 <img src="https://i.ibb.co/FHQ8vdp/Identicon-Tom-Ford-Black-Orchid.png" width="200"/>
-
 <img src="https://i.ibb.co/y6smtWb/Identicon-Vesace-Eros.png" width="200"/>
 
 ### Github Style
