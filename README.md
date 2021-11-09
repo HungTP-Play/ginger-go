@@ -91,3 +91,5 @@ Output example
 ![Github Identicon 2](https://i.ibb.co/LNPwxMB/Github-Bvlgari-Aqva-Pour-Homme.png)
 ![Github Identicon  3](https://i.ibb.co/0GYMDZK/Github-Clue-De-Nuit-Pour-Homme.png)
 ![Github Identicon  4](https://i.ibb.co/X4NB6w1/Github-Vesace-Eros.png)
+
+![Alt](https://repobeats.axiom.co/api/embed/b117db333826b60ce8518ff41bc2729aff1e9b08.svg "Repobeats analytics image")
